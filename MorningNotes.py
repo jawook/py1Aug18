@@ -1,3 +1,28 @@
+# Jamie Wilkie - The Marquee Group / Training The Street
+# jamie.wilkie@trainingthestreet.com
+# Zach Washam - Training the Street
+
+
+# Please start this download...  It's beefy.
+
+# https://winpython.github.io/
+
+# Use the Github link on this line.
+# WinPython 3.11 Downloads (**) via SourceForge and Github
+
+# Download the 749MB file: Winpython64-3.11.4.0.exe TO YOUR DOWNLOADS FOLDER (anywhere else will be slow).
+
+# Once downloaded, run the downloaded file, it will take a little time to extract.
+
+# Then...  I'll let you know where to find it.
+
+# In python 4 fundamental concepts you should understand
+# 	1) Python
+# 	2) Python packages
+# 	3) Anaconda (package manager)
+# 	4) Integrated development environment (IDEs)
+
+# Download files: https://marqueegroup.ca/event/inj28/
 
 # COMMENT HEAVILY
     # the # is the signifier for a comment
