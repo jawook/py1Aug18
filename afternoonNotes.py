@@ -145,4 +145,166 @@ while i < 5:
     i += 1
 
 
+#%% Takeup A1 -> Q2
+
+deal_value = '$123,456,789'
+
+deal_value * 2
+
+deal_value = deal_value.strip('$')
+deal_value = deal_value.split(',')
+deal_value.replace(',', '')
+deal_value = ''.join(deal_value)
+deal_value = int(deal_value)
+deal_value * 2
+
+#%% Takeup A1 -> Question 4
+
+grades = {'Bob':71, 'Alice':65, 'Jim':70, 
+          'Jen':90, 'Tim':86, 'Trish':85, 
+          'Tony':75}
+
+# Initialize the letter_grade dictionary
+letter_grade = {}
+
+# Loop through the pct grade ditionary and figure out the correct letter grade
+# Looping through dictionaries
+for key in grades.keys():
+    print(key)
+
+for value in grades.values():
+    print(value)
+
+for item in grades.items():
+    print(item)
+
+for key in grades.keys():
+    gr = grades[key]
+    if gr >= 90:
+        letter_grade[key] = 'A+'
+    elif gr >= 85:
+        letter_grade[key] = 'A'
+    elif gr >= 80:
+        letter_grade[key] = 'A-'
+    elif gr >= 75:
+        letter_grade[key] = 'B+'
+    elif gr >= 70:
+        letter_grade[key] = 'B'
+    else:
+        letter_grade[key] = 'B-'
+        
+# Assign that letter grade to the appropriate person in the letter grade dict
+
+#%% numpy Package
+
+# Numerical Python
+# Numpy is extremely popular for doing a lot of math.  In particular:
+    # 1) random number generation
+    # 2) statistical calculation
+    # 3) matrix math
+    # 4) other packages rely on numpy
     
+# Numpy has a great set of docs
+
+#%% Pandas
+
+# Pandas is spreadsheets for python
+# But it can handle millions of rows
+    # Doesn't bog down....  too bad.
+    
+# Importing packages
+import pandas as pd
+
+# Importing data from csv
+    # Create a dataframe variable
+sp500 = pd.read_csv('StockData/SP500.csv')
+# Relative reference, relative to project folder
+
+sp500 = pd.read_csv('C:/Users/wilkijam/OneDrive - AMT/Training - Marquee FS/Wells Fargo/2023/py1Aug18/Python Project/StockData/SP500.csv')
+# Absolute reference
+
+sp500 = pd.read_csv('C:\Users\wilkijam\OneDrive - AMT\Training - Marquee FS\Wells Fargo\2023\py1Aug18\Python Project\StockData\SP500.csv')
+# The NORMAL file path in windows will result in an error, flip you slashes
+
+#%%% Descriptive information about a dataset
+
+len(sp500)
+
+sp500.info()
+
+sp500.describe()
+
+sp500.tail() # the last 5 records
+
+sp500.head() # first 5
+
+sp500.head(3)
+
+#%%% Reading an Excel
+
+finDeals = pd.read_excel('Python Project/ExData/Data Manipulation Worksheet.xlsx')
+# If you don't specify sheet name, it goes with the first sheet
+
+finDeals = pd.read_excel('Python Project/ExData/Data Manipulation Worksheet.xlsx',
+                         sheet_name='Financing Table Clean')
+
+#%%% read_html
+
+ipos = pd.read_html('https://www.iposcoop.com/last-100-ipos/')
+
+#%%% getting info from a dataframe
+
+#%%%% columns
+
+# Syntax 1: dfName['colName']
+# Syntax 2: dfName.colName
+
+sp500['Volume']
+sum(sp500['Volume'])
+sum(sp500.Volume)
+
+sum(sp500['Adj Close'])
+sum(sp500.Adj Close)
+
+sp500[['Date', 'Adj Close']]
+
+#%%% Getting datetimes (rather than text in pandas)
+
+sp500['Date'] = pd.to_datetime(sp500['Date'])
+#After you already imported use pd.to_datetime to convert
+
+sp500 = pd.read_csv('Python Project/StockData/SP500.csv', parse_dates=['Date'])
+# Converts dates WHILE reading the file
+
+#%%% Setting your index column
+
+sp500 = sp500.set_index(['Date'])
+# After import was already done
+
+sp500 = pd.read_csv('Python Project/StockData/SP500.csv', parse_dates=['Date'],
+                    index_col=['Date'])
+# Specify index while importing
+
+#%%% Two approaches to access rows
+
+    # 1) Index numbers .iloc -> integer loc
+    # 2) Fancy index name -> .loc
+    
+# ILOC uses integer numbers to access data
+
+sp500.iloc[2]
+sp500.iloc[2:4]
+
+# LOC method uses index 'name' (date) to access
+
+sp500.loc['2013-10-01']
+sp500.loc['20131001']
+sp500.loc['2013-10-01': '2013-10-15']
+
+sp500.loc['2013-10']
+sp500.loc['2013']
+
+sp500.loc['2013-10']['Close']
+sp500.loc['2013-10'][['Open', 'Close']]
+
+sp500.loc['2013-10-01']['Close']
