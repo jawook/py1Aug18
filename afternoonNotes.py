@@ -298,13 +298,72 @@ sp500.iloc[2:4]
 # LOC method uses index 'name' (date) to access
 
 sp500.loc['2013-10-01']
+# Can get a specific data
 sp500.loc['20131001']
+# Can get a specific date, even if you use a different date format than the file
 sp500.loc['2013-10-01': '2013-10-15']
+# Can get ranges of dates
 
 sp500.loc['2013-10']
+# Can use partial dates
 sp500.loc['2013']
 
 sp500.loc['2013-10']['Close']
+# Can get just a specific column for a range of dates
 sp500.loc['2013-10'][['Open', 'Close']]
+# Can get multiple columns for a range of dates (note that columns are a list)
 
 sp500.loc['2013-10-01']['Close']
+# Can get a specific data point
+
+#%%% Dumping data back to csv or excel
+
+# To a csv file
+sp500.to_csv('Python Project/Output/My Csv Export.csv')
+
+# To an excel file
+sp500.to_excel('Python Project/Output/My Excel Export.xlsx')
+
+#%%% Manipulating Data in Pandas
+
+#%%%% Sorting data
+
+sp500.sort_values(['Volume'], inplace = True)
+sp500.sort_values(['Volume'], inplace = True, ascending=False)
+
+# To sort based on multi columns: enter multiple columns as a list
+sp500.sort_values(['Volume', 'Open', 'Close'], inplace = True, ascending=False)
+
+sp500.sort_index(ascending = True, inplace = True)
+
+#%%% Calculated columns
+
+# We can create new calculations using ENTIRE columns of information.
+sp500['Intraday Range'] = sp500['High'] - sp500['Low']
+
+# We can make cald colums with constants
+sp500['Ticker'] = 'SP500'
+
+#%%% .shift() method
+
+# For lagging data use the .shift method (great for calculating returns)
+sp500['Prev. Close'] = sp500['Close'].shift(1)
+
+sp500['Return'] = sp500['Close'] / sp500['Close'].shift(1) - 1
+
+#%%% Filtering in pandas
+
+sp500[sp500['Close'] > 1800]
+# to filter put boolean checks inside square brackets
+
+sp500['Close'] > 1800
+# Creates a true / false columns, pandas keeps the Trues
+
+sp500[(sp500['Close'] > 1800) 
+      & (sp500['Close'] < 1820)]
+
+
+
+
+
+
