@@ -246,7 +246,3 @@ dict1 = {'AAPL': aaplDict, 'NFLX': nflxDict}
 dict1['AAPL']['Price']
 dict1['NFLX']['EPS']
 
-
-
-
-
